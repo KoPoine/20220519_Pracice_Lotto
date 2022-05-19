@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     val mWinNumViewList = ArrayList<TextView>()
 
 //    보너스 숫자 저장용 멤버변수 생성
-    var bonusNum = 0
+    var mBonusNum = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,11 +73,16 @@ class MainActivity : AppCompatActivity() {
         for ((index, winNum) in mWinNumList.withIndex()) {
             mWinNumViewList[index].text = winNum.toString()
         }
-//        3. 보너스 번호 하나 선정
+//        3. 보너스 번호 하나 선정 // 텍스트 뷰에 배치
+        while (true) {
+            val randomNum = (Math.random() * 45 + 1).toInt()
 
-
-
-
+            if (!mWinNumList.contains(randomNum)) {
+                mBonusNum = randomNum
+                bunusNumTxt.text = mBonusNum.toString()
+                break
+            }
+        }
     }
 
     fun checkLottoRank() {
