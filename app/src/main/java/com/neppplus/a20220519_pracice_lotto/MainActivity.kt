@@ -2,10 +2,14 @@ package com.neppplus.a20220519_pracice_lotto
 
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+//    내 번호 6개 저장
+    var mMyNumList = arrayOf(3, 5, 7, 8, 9, 11)
 
 //    컴퓨터가 뽑은 당첨번호를 6개 저장할 ArrayList 만들어주자
     val mWinNumList = ArrayList<Int>()
@@ -15,6 +19,17 @@ class MainActivity : AppCompatActivity() {
 
 //    보너스 숫자 저장용 멤버변수 생성
     var mBonusNum = 0
+
+//    사용금액 / 당첨금액 / 당첨 횟수
+    var mUsedMoney = 0
+    var mEaredMoney = 0L   // 30억 이상의 당첨 대비, Long 타입으로 설정
+
+    var firstCount = 0
+    var secondCount = 0
+    var thirdCount = 0
+    var fourthCount = 0
+    var fifthCount = 0
+    var loseCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,15 +98,68 @@ class MainActivity : AppCompatActivity() {
                 break
             }
         }
+        checkLottoRank()
     }
 
     fun checkLottoRank() {
 //        4. 비교
+        var correctCount = 0
 
+//        내 번호를 하나씩 조회
+        for (myNum in mMyNumList) {
 
+//            당첨 번호를 맞췄는가? => 당첨번호 목록에 내 번호가 들어있나?
+            if (mWinNumList.contains(myNum)) {
+                correctCount++
+            }
+        }
 //        순위선정 (텍스트 뷰 출력)
+        when (correctCount) {
+            6 -> {
+                mEaredMoney += 3000000000
+                firstCount++
+            }
+            5 -> {
+//                보너스 번호를 맞췃는지? => 보너스 번호가 내 번호 목록에 들어있나?
+                if (mMyNumList.contains(mBonusNum)) {
+                    mEaredMoney += 50000000
+                    secondCount++
+                }
+                else {
+                    mEaredMoney += 2000000
+                    thirdCount ++
+                }
+            }
+            4-> {
+                mEaredMoney += 50000
+                fourthCount++
+            }
+            3 -> {
+                mEaredMoney += 5000
+                fifthCount++
+            }
+            else -> {
+                loseCount
+            }
+        }
+//        사용금액 / 당첨 금액 및 횟수 텍스튜에 각각 반영
 
 
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
