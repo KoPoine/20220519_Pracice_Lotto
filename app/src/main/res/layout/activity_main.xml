@@ -101,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="3, 5, 7, 8, 9, 11"
+        android:text="4, 15, 27, 38, 19, 41"
         android:textSize="20sp"
         android:textColor="@color/black"/>
 

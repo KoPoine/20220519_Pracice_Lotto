@@ -12,7 +12,7 @@ import java.text.NumberFormat
 class MainActivity : AppCompatActivity() {
 
 //    내 번호 6개 저장
-    var mMyNumList = arrayOf(3, 5, 7, 8, 9, 11)
+    var mMyNumList = arrayOf(4, 15, 27, 38, 19, 41)
 
 //    컴퓨터가 뽑은 당첨번호를 6개 저장할 ArrayList 만들어주자
     val mWinNumList = ArrayList<Int>()
